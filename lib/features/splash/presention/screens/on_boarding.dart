@@ -29,7 +29,7 @@ class onBoardingScreen extends StatelessWidget {
                             controller.jumpToPage(2);
                           },
                           child: Text(
-                            'Skip',
+                            OnBoardingModel.onBoardingScreens[index].skip,
                             style: GoogleFonts.acme(
                                 color: Colors.grey[400],
                                 fontSize: 20,
@@ -108,7 +108,7 @@ class onBoardingScreen extends StatelessWidget {
                               child: ElevatedButton(
                                   onPressed: () {
                                     index == 2
-                                        ? Navigator.pushNamed(
+                                        ? Navigator.pushReplacementNamed(
                                             context, homeScreen.routeName)
                                         : controller.nextPage(
                                             duration:

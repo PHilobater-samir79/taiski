@@ -24,7 +24,7 @@ class taiski extends StatelessWidget {
         onBoardingScreen.routeName : (context ) => onBoardingScreen(),
 
       },
-      initialRoute:onBoardingScreen.routeName,
+      initialRoute:splashScreen.routeName,
 
     );
   }

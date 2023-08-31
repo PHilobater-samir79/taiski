@@ -1,14 +1,24 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:to_do/features/tasks/presention/screens/add_task.dart';
+import 'package:to_do/features/tasks/presention/screens/task_widget.dart';
 
-class homeScreen extends StatelessWidget {
+class homeScreen extends StatefulWidget {
   static const String routeName = 'homeScreen' ;
 
+  @override
+  State<homeScreen> createState() => _homeScreenState();
+}
+
+class _homeScreenState extends State<homeScreen> {
+  String dateChoose = '' ;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -16,35 +26,51 @@ class homeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('May 10,2023',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w800),),
+              Text(DateFormat.yMMMMd().format(DateTime.now()),style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w800),),
               SizedBox(height: 10,),
               Text('Today',style: TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.w500),textAlign: TextAlign.start,),
               SizedBox(height: 8,),
-              CalendarTimeline(
-                initialDate: DateTime.now(),
-                firstDate: DateTime.now().subtract(Duration(days: 365)),
-                lastDate: DateTime.now().add(Duration(days: 365)),
-                onDateSelected: (date) {
+              DatePicker(
+                DateTime.now(),
+                dateTextStyle: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20
+                ),
+                monthTextStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 10
+                ),
+                dayTextStyle: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 10
+                ),
+                initialSelectedDate: DateTime.now(),
+                selectionColor: Color(0xff242969),
+                selectedTextColor: Colors.white,
+                onDateChange: (date) {
+                  setState(() {
+                    dateChoose == date ;
+                  });
+
+
                 },
-                leftMargin: 20,
-                monthColor: Colors.grey,
-                dayColor: Colors.grey,
-                activeDayColor: Colors.white,
-                activeBackgroundDayColor: Color(0xfff242969),
-                selectableDayPredicate: (date) => true,
-                locale: 'en_ISO',
               ),
               SizedBox(height: 30,),
-              Column(
-                children: [
-                  Center(
-                      child: Image.asset('assets/images/home_image.png')),
-                  Text('What do you want to do today ? ',style: TextStyle(color: Colors.grey[300],fontSize: 20,fontWeight: FontWeight.w400),),
-                  SizedBox(height: 8,),
-                  Text('Add Tasks Now !! ',style: TextStyle(color: Colors.grey[400],fontSize: 15,fontWeight: FontWeight.w400),),
 
-                ],
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 2,
+                  itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: taskWidget(),
+                  );
+                },),
               )
+
 
 
 
@@ -67,3 +93,19 @@ class homeScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+///Column(
+//                 children: [
+//                   Center(
+//                       child: Image.asset('assets/images/home_image.png')),
+//                   Text('What do you want to do today ? ',style: GoogleFonts.acme(textStyle: TextStyle(color: Colors.grey[300],fontSize: 22,fontWeight: FontWeight.w400)),),
+//                   SizedBox(height: 8,),
+//                   Text('Add Tasks Now !! ',style:GoogleFonts.lato(textStyle:TextStyle(color: Colors.grey[400],fontSize: 15,fontWeight: FontWeight.w400)),),
+//
+//                 ],
+//               )
