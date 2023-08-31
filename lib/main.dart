@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:to_do/add_task/add_task.dart';
-import 'package:to_do/home/home_screen.dart';
-import 'package:to_do/splash/splash_screen.dart';
+import 'package:to_do/features/splash/presention/screens/on_boarding.dart';
+import 'package:to_do/features/splash/presention/screens/splash_screen.dart';
+import 'package:to_do/features/tasks/presention/screens/add_task.dart';
+import 'package:to_do/features/tasks/presention/screens/home_screen.dart';
 
 void main() {
   runApp(taiski());
@@ -20,8 +21,10 @@ class taiski extends StatelessWidget {
         splashScreen.routeName : (context) => splashScreen(),
         homeScreen.routeName : (context) => homeScreen(),
         addTaskScreen.routeName : (context) => addTaskScreen(),
+        onBoardingScreen.routeName : (context ) => onBoardingScreen(),
+
       },
-      initialRoute:splashScreen.routeName,
+      initialRoute:onBoardingScreen.routeName,
 
     );
   }
