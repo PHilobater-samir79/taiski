@@ -1,7 +1,9 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do/features/tasks/data/TaskModel.dart';
 import 'package:to_do/features/tasks/presention/screens/add_task.dart';
 import 'package:to_do/features/tasks/presention/screens/task_widget.dart';
 
@@ -14,6 +16,7 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   String dateChoose = '' ;
+
 
   @override
   Widget build(BuildContext context) {
@@ -59,21 +62,30 @@ class _homeScreenState extends State<homeScreen> {
                 },
               ),
               SizedBox(height: 30,),
+              TaskModel.taskModelItem.isEmpty ?
+              Column(
+                 children: [
+                   Center(
+                       child: Image.asset('assets/images/home_image.png')),
+                   Text('What do you want to do today ? ',style: GoogleFonts.acme(textStyle: TextStyle(color: Colors.grey[300],fontSize: 22,fontWeight: FontWeight.w400)),),
+                  SizedBox(height: 8,),
+                   Text('Add Tasks Now !! ',style:GoogleFonts.lato(textStyle:TextStyle(color: Colors.grey[400],fontSize: 15,fontWeight: FontWeight.w400)),),
 
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 2,
-                  itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: taskWidget(),
-                  );
-                },),
-              )
+                 ],
+               )
 
+              :
 
-
-
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: TaskModel.taskModelItem.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: taskWidget(taskModel: TaskModel.taskModelItem[index]),
+                      );
+                    },),
+                )
 
 
 
@@ -99,13 +111,3 @@ class _homeScreenState extends State<homeScreen> {
 
 
 
-///Column(
-//                 children: [
-//                   Center(
-//                       child: Image.asset('assets/images/home_image.png')),
-//                   Text('What do you want to do today ? ',style: GoogleFonts.acme(textStyle: TextStyle(color: Colors.grey[300],fontSize: 22,fontWeight: FontWeight.w400)),),
-//                   SizedBox(height: 8,),
-//                   Text('Add Tasks Now !! ',style:GoogleFonts.lato(textStyle:TextStyle(color: Colors.grey[400],fontSize: 15,fontWeight: FontWeight.w400)),),
-//
-//                 ],
-//               )

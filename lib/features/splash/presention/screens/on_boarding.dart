@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:to_do/core/local_Data/catch_helper.dart';
+import 'package:to_do/core/service/services_locator.dart';
 import 'package:to_do/features/splash/data/on_boarding_model.dart';
 import 'package:to_do/features/tasks/presention/screens/home_screen.dart';
 
@@ -106,16 +108,20 @@ class onBoardingScreen extends StatelessWidget {
                             Align(
                               alignment: Alignment.bottomRight,
                               child: ElevatedButton(
-                                  onPressed: () {
-                                    index == 2
-                                        ? Navigator.pushReplacementNamed(
-                                            context, homeScreen.routeName)
-                                        : controller.nextPage(
-                                            duration:
-                                                Duration(milliseconds: 1000),
-                                            curve:
-                                                Curves.fastEaseInToSlowEaseOut);
-                                  },
+                                  onPressed: () async {
+                                   var dataSaved = await getIt<CacheHelper>().setData(key: 'isVisited', value: true)
+                                        .then((value)
+                                    {
+                                      index == 2
+                                          ? Navigator.pushReplacementNamed(
+                                          context, homeScreen.routeName)
+                                          : controller.nextPage(
+                                          duration:
+                                          Duration(milliseconds: 1000),
+                                          curve:
+                                          Curves.fastEaseInToSlowEaseOut);
+                                    });
+                                    },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Color(0xff242969),
                                       shape: RoundedRectangleBorder(
