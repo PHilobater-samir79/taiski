@@ -70,7 +70,7 @@ class onBoardingScreen extends StatelessWidget {
                           style: GoogleFonts.lato(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
-                              fontSize: 35),
+                              fontSize: 30),
                         )),
                         SizedBox(
                           height: 20,
