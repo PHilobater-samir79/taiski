@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:to_do/core/service/notifications.dart';
+import 'package:to_do/features/tasks/data/TaskModel.dart';
 import 'package:to_do/features/tasks/presention/cubit/task_cubit.dart';
 import 'package:to_do/features/tasks/presention/screens/add_task.dart';
 import 'package:to_do/features/tasks/presention/screens/task_widget.dart';
+
 
 class homeScreen extends StatefulWidget {
   static const String routeName = 'homeScreen';
@@ -17,7 +20,6 @@ class homeScreen extends StatefulWidget {
 class _homeScreenState extends State<homeScreen> {
   String dateChoose = '';
   int? indexList ;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,7 +114,8 @@ class _homeScreenState extends State<homeScreen> {
                                 .taskModelItemList
                                 .length,
                             itemBuilder: (context, indexList) {
-                              return Padding(
+
+                               return Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: InkWell(
                                   onTap: (){

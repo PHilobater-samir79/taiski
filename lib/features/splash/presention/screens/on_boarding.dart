@@ -44,8 +44,8 @@ class onBoardingScreen extends StatelessWidget {
                         Center(
                             child: Image.asset(
                           OnBoardingModel.onBoardingScreens[index].imagePath,
-                          height: 300,
-                          width: 300,
+                          height: 250,
+                          width: 250,
                         )),
                         SizedBox(
                           height: 40,
@@ -70,7 +70,7 @@ class onBoardingScreen extends StatelessWidget {
                           style: GoogleFonts.lato(
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
-                              fontSize: 30),
+                              fontSize: 35),
                         )),
                         SizedBox(
                           height: 20,
@@ -84,9 +84,7 @@ class onBoardingScreen extends StatelessWidget {
                               fontSize: 16),
                           textAlign: TextAlign.center,
                         )),
-                        SizedBox(
-                          height: 150,
-                        ),
+                        Spacer(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -109,19 +107,19 @@ class onBoardingScreen extends StatelessWidget {
                               alignment: Alignment.bottomRight,
                               child: ElevatedButton(
                                   onPressed: () async {
-                                   var dataSaved = await getIt<CacheHelper>().setData(key: 'isVisited', value: true)
-                                        .then((value)
-                                    {
+                                    var dataSaved = await getIt<CacheHelper>()
+                                        .setData(key: 'isVisited', value: true)
+                                        .then((value) {
                                       index == 2
                                           ? Navigator.pushReplacementNamed(
-                                          context, homeScreen.routeName)
+                                              context, homeScreen.routeName)
                                           : controller.nextPage(
-                                          duration:
-                                          Duration(milliseconds: 1000),
-                                          curve:
-                                          Curves.fastEaseInToSlowEaseOut);
+                                              duration:
+                                                  Duration(milliseconds: 1000),
+                                              curve: Curves
+                                                  .fastEaseInToSlowEaseOut);
                                     });
-                                    },
+                                  },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Color(0xff242969),
                                       shape: RoundedRectangleBorder(
