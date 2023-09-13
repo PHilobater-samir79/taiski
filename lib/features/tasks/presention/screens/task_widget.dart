@@ -45,7 +45,7 @@ class taskWidget extends StatelessWidget {
       child: BlocBuilder<TaskCubit, TaskState>(
         builder: (context, state) {
           return Container(
-            height: height * .15,
+            height: height * .17,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: getColor(taskModel.colorIndex)
@@ -58,12 +58,18 @@ class taskWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        taskModel.title,
-                        style: GoogleFonts.lato(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700),
+                      Expanded(
+                        child: SizedBox(
+                          width: width*.6,
+                          child: Text(
+                            taskModel.title,
+                            style: GoogleFonts.lato(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
                       SizedBox(height: 10.h),
                       Row(
@@ -82,16 +88,21 @@ class taskWidget extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 10.h),
-                      SizedBox(
-                          width: width * .6,
-                          child: Text(
-                            taskModel.note,
-                            style: GoogleFonts.lato(
-                                color: Colors.grey[200],
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500),
-                            overflow: TextOverflow.ellipsis,
-                          )),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Expanded(
+                          child: SizedBox(
+                              width: width * .6,
+                              child: Text(
+                                taskModel.note,
+                                style: GoogleFonts.lato(
+                                    color: Colors.grey[200],
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                                overflow: TextOverflow.ellipsis,
+                              )),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -114,14 +125,14 @@ class taskWidget extends StatelessWidget {
                                   style: GoogleFonts.acme(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w800,
-                                      fontSize: 20),
+                                      fontSize: 18),
                                 )
                               : Text(
                                   'TODO',
                                   style: GoogleFonts.acme(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w900,
-                                      fontSize: 22),
+                                      fontSize: 20),
                                 ))
                     ],
                   ),
