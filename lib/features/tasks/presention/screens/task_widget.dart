@@ -11,31 +11,21 @@ class taskWidget extends StatelessWidget {
   Color getColor(index) {
     switch (index) {
       case 0:
-        return Colors.indigo;
+        return Color(0xff546e7a);
       case 1:
-        return Colors.deepPurple;
+        return Color(0xffFF4666);
       case 2:
-        return Colors.red;
+        return Color(0xffCC8441);
       case 3:
         return Colors.teal;
       case 4:
-        return Colors.cyan;
+        return Color(0xff7e57c2);
       case 5:
-        return Colors.greenAccent;
-      case 6:
-        return Colors.blue;
-      case 7:
-        return Colors.brown;
-      case 8:
-        return Colors.white38;
-      case 9:
-        return Colors.green;
+        return Color(0xffc51162);
       default:
-        return Colors.pink;
+        return Colors.indigo;
     }
   }
-
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -45,7 +35,7 @@ class taskWidget extends StatelessWidget {
       child: BlocBuilder<TaskCubit, TaskState>(
         builder: (context, state) {
           return Container(
-            height: height * .17,
+            height: height * .155,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: getColor(taskModel.colorIndex)
@@ -58,27 +48,25 @@ class taskWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          width: width*.6,
-                          child: Text(
-                            taskModel.title,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700),
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                      SizedBox(
+                        width: width*.6,
+                        child: Text(
+                          taskModel.title,
+                          style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700),
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 15),
                       Row(
                         children: [
                           Icon(
                             Icons.access_time,
                             color: Colors.white,
                           ),
-                          SizedBox(width: 7.w),
+                          SizedBox(width: 5),
                           Text(
                               '${taskModel.startTime} - ${taskModel.endTime}',
                               style: GoogleFonts.lato(
@@ -87,21 +75,19 @@ class taskWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w500)),
                         ],
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 10),
                       Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Expanded(
-                          child: SizedBox(
-                              width: width * .6,
-                              child: Text(
-                                taskModel.note,
-                                style: GoogleFonts.lato(
-                                    color: Colors.grey[200],
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
-                                overflow: TextOverflow.ellipsis,
-                              )),
-                        ),
+                        padding:  EdgeInsets.only(bottom: 7),
+                        child: SizedBox(
+                            width: width * .6,
+                            child: Text(
+                              taskModel.note,
+                              style: GoogleFonts.lato(
+                                  color: Colors.grey[200],
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500),
+                              overflow: TextOverflow.ellipsis,
+                            )),
                       ),
                     ],
                   ),

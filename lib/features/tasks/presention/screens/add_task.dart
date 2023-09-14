@@ -288,7 +288,8 @@ class addTaskScreen extends StatelessWidget {
                                         ),
                                       );
                                     },
-                                    itemCount: 10),
+                                    itemCount: 6
+                                ),
                               ),
                             ],
                           ),

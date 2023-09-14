@@ -70,27 +70,19 @@ class TaskCubit extends Cubit<TaskState> {
   Color getColor(index) {
     switch (index) {
       case 0:
-        return Colors.indigo;
+        return Color(0xff546e7a);
       case 1:
-        return Colors.deepPurple;
+        return Color(0xffFF4666);
       case 2:
-        return Colors.red;
+        return Color(0xffCC8441);
       case 3:
         return Colors.teal;
       case 4:
-        return Colors.cyan;
+        return Color(0xff7e57c2);
       case 5:
-        return Colors.greenAccent;
-      case 6:
-        return Colors.blue;
-      case 7:
-        return Colors.brown;
-      case 8:
-        return Colors.white38;
-      case 9:
-        return Colors.green;
+        return Color(0xffc51162);
       default:
-        return Colors.pink;
+        return Colors.indigo;
     }
   }
 
